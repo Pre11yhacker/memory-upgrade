@@ -183,6 +183,4 @@ memory-upgrade/
 
 [Telegram · @s1lentpacket](https://t.me/s1lentpacket) &nbsp;·&nbsp; [GitHub · Pre11yhacker](https://github.com/Pre11yhacker)
 
-<sub>Memory Upgrade — Keep project context. Continue with intent.</sub>
-
 </div>
