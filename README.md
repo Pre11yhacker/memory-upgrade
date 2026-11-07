@@ -1,86 +1,89 @@
 <div align="center">
 
-# 🧠 Memory Upgrade
+<img src="assets/memory-upgrade-hero.gif" alt="Анимация: сессия превращается в чекпоинт и сохраняется в памяти проекта" width="960">
 
-### Project context that survives the context window.
+# Memory Upgrade
 
-A portable agent skill for saving the decisions, progress, and next steps that make a project easy to resume.
+### Память проекта между сессиями
 
-[Agent Skills standard](https://agentskills.io/) · [Install](#-install) · [How it works](#-how-it-works)
+Решения, прогресс и следующий шаг — в одном месте, чтобы продолжить работу без повторного погружения.
 
 </div>
 
 ---
 
-## The problem
+## Зачем
 
-Long-running project work gets split across chats, context windows, and agents. Important choices and unfinished steps can disappear between sessions. **Memory Upgrade** keeps a small, readable SESSION_MEMORY.md in the project so the next session can pick up from the real state of the repository.
+Проектная работа редко укладывается в один чат или одно контекстное окно. **Memory Upgrade** сохраняет важные события в файле **SESSION_MEMORY.md** внутри проекта — так следующий запуск агента видит, что уже сделано и куда двигаться дальше.
 
-## What it records
+## Что попадает в чекпоинты
 
-- The current objective, status, and next concrete action
-- Decisions, constraints, and user corrections
-- Meaningful changes, commands, and checks, with their actual outcomes
-- Open questions, blockers, and deferred work
+- Текущая цель, статус и ближайший следующий шаг
+- Требования, уточнения и принятые решения
+- Существенные действия, изменения файлов и результаты проверок
+- Незавершённые вопросы, блокеры и отложенные задачи
 
-The result is a checkpoint trail, not a transcript. It stays concise and points to project files instead of copying large code or tool output.
+Это сжатая история работы, а не дословная стенограмма: она бережёт контекст и не копирует целиком выводы инструментов или исходный код.
 
-## ⚡ Install
+## Установка
 
-### One command for multiple agents
+### Для нескольких агентов
 
-Install with the [GitHub CLI skill command](https://cli.github.com/manual/gh_skill_install) (requires a version that includes gh skill):
+Если установлен GitHub CLI с командой gh skill, скопируйте эту команду и уберите ненужные параметры --agent:
 
-    gh skill install Pre11yhacker/memory-upgrade memory-upgrade --agent codex --agent claude-code --agent cursor --agent github-copilot --agent opencode --scope user
+```sh
+gh skill install Pre11yhacker/memory-upgrade memory-upgrade --agent codex --agent claude-code --agent cursor --agent github-copilot --agent opencode --scope user
+```
 
-Remove any --agent entries for tools you do not use. To install only for the current project, change --scope user to --scope project. See [gh skill install](https://cli.github.com/manual/gh_skill_install) for supported agents and options.
+Измените --scope user на --scope project, чтобы установить навык только для текущего репозитория. Список агентов и параметры — в [документации GitHub CLI](https://cli.github.com/manual/gh_skill_install).
 
-### Make checkpoints part of every project session
+### Чтобы чекпоинты создавались на протяжении всей проектной работы
 
-Skills are commonly selected when relevant. For a stronger always-on workflow, copy [skills/memory-upgrade/AGENTS.md](skills/memory-upgrade/AGENTS.md) into each project root, merging it with existing instructions. This makes the checkpoint rule visible at the start of project sessions in agents that load AGENTS.md. If your agent uses another always-loaded rules file, add the same short instruction there.
+Навык автоматически доступен агенту, который поддерживает формат Agent Skills. Для более надёжного применения в каждом проектном сеансе скопируйте [skills/memory-upgrade/AGENTS.md](skills/memory-upgrade/AGENTS.md) в корень проекта и объедините его с уже существующими инструкциями. Не заменяйте им проектный AGENTS.md целиком.
 
-The skill and bootstrap are complementary: the skill contains the full workflow; the project rule reminds the agent to keep applying it.
+Если агент использует другой файл постоянно загружаемых правил, добавьте туда ту же краткую инструкцию. Полный порядок работы описан в [SKILL.md](skills/memory-upgrade/SKILL.md).
 
-## 🔄 How it works
+## Как это работает
 
-    New session
-        ↓
-    Read SESSION_MEMORY.md and reconcile it with the repository
-        ↓
-    Work in small units and save dated checkpoints as the state changes
-        ↓
-    Update the current status and next action before a handoff or pause
-        ↓
-    Next session resumes from the checkpoint
+1. В начале работы агент читает SESSION_MEMORY.md и сверяет заметки с файлами проекта.
+2. Во время работы он сохраняет важные запросы, решения, выполненные шаги и результаты.
+3. Перед паузой или передачей задачи он обновляет статус и записывает следующий шаг.
+4. Новый сеанс начинает с этого чекпоинта и проверяет его по текущему состоянию проекта.
 
-Memory lives in one Markdown file, normally at the project root. If it does not exist, the skill can start from [templates/SESSION_MEMORY.md](skills/memory-upgrade/templates/SESSION_MEMORY.md).
+Для нового проекта можно взять [шаблон памяти](skills/memory-upgrade/templates/SESSION_MEMORY.md). Обычно файл создаётся в корне проекта.
 
-## 🧭 Agent compatibility
+## Совместимость
 
-The skill uses the open SKILL.md format rather than a platform-specific API. GitHub CLI installs skills for many hosts, including Codex, Claude Code, Cursor, GitHub Copilot, Gemini CLI, and OpenCode. The exact location and whether skills are automatically considered depend on each host; use the host's always-loaded project instructions for the most reliable per-session checkpointing.
+Навык написан в переносимом формате **SKILL.md** и может устанавливаться в совместимые агентные системы. GitHub CLI поддерживает множество агентов, включая Codex, Claude Code, Cursor, GitHub Copilot, Gemini CLI и OpenCode. Конкретное место установки и автоматический выбор зависят от среды.
 
-- [Agent Skills specification](https://agentskills.io/specification)
-- [GitHub Copilot: add agent skills](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
-- [Cursor: project instructions and AGENTS.md](https://docs.cursor.com/context/rules-for-ai)
-- [OpenCode: agent skills](https://opencode.ai/docs/skills/)
+- [Спецификация Agent Skills](https://agentskills.io/specification)
+- [Установка навыков через GitHub CLI](https://cli.github.com/manual/gh_skill_install)
+- [Навыки OpenCode](https://opencode.ai/docs/skills/)
+- [Правила Cursor и AGENTS.md](https://docs.cursor.com/context/rules-for-ai)
 
-## 🔒 Accuracy and privacy
+## Точность и приватность
 
-The memory is a normal project file. Keep verified facts separate from assumptions, record checks only after they run, and treat the repository as authoritative when resuming. Never copy credentials, private keys, or unrelated sensitive information into the checkpoint. Decide whether to commit SESSION_MEMORY.md based on whether the project context should be shared with collaborators.
+Проверяйте сохранённые сведения по репозиторию: файлы проекта важнее устаревшей заметки. Отделяйте факты от предположений и отмечайте проверки только после их выполнения. Не записывайте пароли, токены, приватные ключи и посторонние личные данные.
 
-> **A note on “background” behavior:** this is an instruction workflow, not a separate process watching the session. The active agent writes checkpoints as it works. It summarizes material project events instead of capturing every token or raw tool output, and it cannot record work while the agent is inactive.
+Решите, нужно ли хранить SESSION_MEMORY.md в Git: он может быть полезен всей команде, но иногда содержит личный ход работы.
 
-## 📁 Repository layout
+> **Важно:** навык не является отдельным фоновым процессом. Чекпоинты записывает активный агент во время работы; неактивную сессию он не наблюдает и дословно каждый токен не сохраняет.
 
-    AGENTS.md                          # instructions for agents working on this repository
-    README.md
-    skills/
-    └── memory-upgrade/
-        ├── AGENTS.md                  # portable always-loaded project bootstrap
-        ├── SKILL.md                   # reusable workflow
-        └── templates/
-            └── SESSION_MEMORY.md      # starter for a project's memory file
+## Структура
 
-## Contributing
+```text
+AGENTS.md
+README.md
+assets/
+└── memory-upgrade-hero.gif
+skills/
+└── memory-upgrade/
+    ├── AGENTS.md
+    ├── SKILL.md
+    └── templates/
+        └── SESSION_MEMORY.md
+```
 
-Improvements to the workflow should keep the skill portable, concise, and honest about what an agent can verify. Please include the relevant agent host and installation context when reporting compatibility issues.
+## Вклад
+
+Предложения и исправления приветствуются. Для проблем с установкой укажите название агента, его версию и способ подключения навыка.
