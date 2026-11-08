@@ -1,23 +1,35 @@
 <div align="center">
 
-<img src="assets/memory-upgrade-banner.svg" alt="Memory Upgrade — persistent project context for AI agents" width="100%">
+<img src="assets/memory-upgrade-banner.svg" alt="Memory Upgrade" width="100%">
 
-<p>
-  <strong>Память проекта для AI-агентов</strong><br>
-  Сохраняйте важный контекст между сессиями и продолжайте работу без повторного погружения.
-</p>
+<br>
 
-<p>
-  <a href="#возможности">Возможности</a> &nbsp;·&nbsp;
-  <a href="#как-это-работает">Как работает</a> &nbsp;·&nbsp;
-  <a href="#установка">Установка</a> &nbsp;·&nbsp;
-  <a href="#безопасность">Безопасность</a> &nbsp;·&nbsp;
-  <a href="#контакты">Контакты</a>
-</p>
+### Рабочая память для AI-агентов
 
-<a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/format-Agent%20Skills-8B5CF6?style=flat-square&labelColor=171020" alt="Agent Skills"></a>
-<img src="https://img.shields.io/badge/workflow-restore%20%2F%20record%20%2F%20resume-6D28D9?style=flat-square&labelColor=171020" alt="Restore Record Resume">
-<a href="https://github.com/Pre11yhacker/memory-upgrade"><img src="https://img.shields.io/github/stars/Pre11yhacker/memory-upgrade?style=flat-square&color=A78BFA&labelColor=171020" alt="GitHub stars"></a>
+Сохраняйте контекст проекта между сессиями. Возвращайтесь к работе с пониманием того, что уже сделано, почему были приняты решения и что делать дальше.
+
+<br>
+
+<a href="#возможности"><img src="https://img.shields.io/badge/ВОЗМОЖНОСТИ-ОЗНАКОМИТЬСЯ-171020?style=for-the-badge&labelColor=171020&color=6D28D9" alt="Возможности"></a>
+<a href="#установка"><img src="https://img.shields.io/badge/УСТАНОВКА-НАЧАТЬ-171020?style=for-the-badge&labelColor=171020&color=8B5CF6" alt="Установка"></a>
+<a href="#контакты"><img src="https://img.shields.io/badge/КОНТАКТЫ-СВЯЗАТЬСЯ-171020?style=for-the-badge&labelColor=171020&color=A78BFA" alt="Контакты"></a>
+
+<br><br>
+
+<a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent_Skills-compatible-8B5CF6?style=flat-square&labelColor=171020" alt="Agent Skills"></a>
+<img src="https://img.shields.io/badge/Workflow-Restore_%2F_Work_%2F_Resume-6D28D9?style=flat-square&labelColor=171020" alt="Workflow">
+<a href="https://github.com/Pre11yhacker/memory-upgrade/stargazers"><img src="https://img.shields.io/github/stars/Pre11yhacker/memory-upgrade?style=flat-square&color=A78BFA&labelColor=171020" alt="GitHub stars"></a>
+<a href="https://github.com/Pre11yhacker/memory-upgrade/blob/Zangetsuvpn/LICENSE"><img src="https://img.shields.io/github/license/Pre11yhacker/memory-upgrade?style=flat-square&color=8B5CF6&labelColor=171020" alt="License"></a>
+
+</div>
+
+---
+
+## Содержание
+
+<div align="center">
+
+[О проекте](#о-проекте)　·　[Возможности](#возможности)　·　[Принцип-работы](#принцип-работы)　·　[Установка](#установка)　·　[Безопасность](#безопасность)　·　[Структура](#структура-проекта)　·　[Контакты](#контакты)
 
 </div>
 
@@ -27,58 +39,57 @@
 
 **Memory Upgrade** — переносимый навык в формате [Agent Skills](https://agentskills.io/specification), который помогает AI-агентам вести компактную рабочую память проекта в файле `SESSION_MEMORY.md`.
 
-Вместо того чтобы полагаться только на историю чата, агент сохраняет то, что действительно понадобится дальше: текущее состояние проекта, важные решения, ограничения, результаты проверок и ближайший следующий шаг.
+Обычная история чата не всегда доступна в новой сессии, а повторное объяснение архитектуры и принятых решений отнимает время. Memory Upgrade решает эту проблему: агент сохраняет важный контекст в отдельном файле, а при следующем запуске читает его и сверяет с реальным состоянием проекта.
 
-При запуске новой сессии память перечитывается и сверяется с реальным состоянием файлов. Это помогает продолжить работу с нужного места, а не восстанавливать контекст с нуля.
-
-> **Идея:** не архивировать весь диалог, а сохранять рабочее состояние проекта — кратко, проверяемо и пригодно для продолжения.
+> **Основной принцип**  
+> Не сохранять весь диалог. Сохранять только то, что помогает продолжить работу: состояние, решения, ограничения, проверенные результаты и следующий шаг.
 
 ## Возможности
 
 <table>
   <tr>
-    <td width="50%">
-      <strong>Контекст между сессиями</strong><br>
-      <sub>Сохраняет состояние проекта и помогает восстановить ход работы после перезапуска агента.</sub>
+    <td width="50%" valign="top">
+      <h3>Контекст между сессиями</h3>
+      Агент восстанавливает состояние проекта после перезапуска и не начинает знакомство с ним заново.
     </td>
-    <td width="50%">
-      <strong>Память по делу</strong><br>
-      <sub>Фиксирует решения, ограничения, результаты и незавершённые задачи вместо стенограммы чата.</sub>
+    <td width="50%" valign="top">
+      <h3>Только важное</h3>
+      В памяти остаются решения, ограничения и результаты — без стенограммы каждого сообщения.
     </td>
   </tr>
   <tr>
-    <td>
-      <strong>Сверка с проектом</strong><br>
-      <sub>Заметки проверяются по актуальным файлам, чтобы устаревший контекст не становился источником истины.</sub>
+    <td width="50%" valign="top">
+      <h3>Проверка актуальности</h3>
+      Сохранённые заметки сверяются с файлами проекта, чтобы устаревшая информация не считалась истиной.
     </td>
-    <td>
-      <strong>Понятная точка продолжения</strong><br>
-      <sub>В памяти остаётся следующий практический шаг, а не только список уже сделанного.</sub>
+    <td width="50%" valign="top">
+      <h3>Понятное продолжение</h3>
+      Агент фиксирует открытые вопросы и ближайший практический шаг.
     </td>
   </tr>
 </table>
 
-### Что попадает в память
+### Содержание файла памяти
 
-| Блок | Что содержит |
-|---|---|
-| Состояние | Цель проекта, текущий статус и ближайший шаг |
-| Контекст | Архитектура, требования, важные ограничения |
-| Решения | Выбранные подходы и причины выбора |
-| Прогресс | Выполненные действия и подтверждённые результаты |
-| Открытые вопросы | Блокеры, риски и незавершённые задачи |
+| Раздел | Что хранится |
+|:--|:--|
+| **Состояние** | Цель проекта, текущий статус и ближайший шаг |
+| **Контекст** | Архитектура, требования и важные ограничения |
+| **Решения** | Выбранные подходы и причины выбора |
+| **Прогресс** | Выполненные действия и подтверждённые результаты |
+| **Открытые вопросы** | Блокеры, риски и незавершённые задачи |
 
-## Как это работает
+## Принцип работы
 
 <div align="center">
-  <sub>Один файл памяти связывает последовательные рабочие сессии</sub>
+  <sub>Один файл связывает последовательные рабочие сессии</sub>
 </div>
 
 ```mermaid
 flowchart TD
     A["Новая сессия"] --> B["Прочитать SESSION_MEMORY.md"]
-    B --> C["Сверить заметки с файлами проекта"]
-    C --> D["Продолжить текущую задачу"]
+    B --> C["Сверить заметки с проектом"]
+    C --> D["Продолжить работу"]
     D --> E["Зафиксировать решения и результаты"]
     E --> F["Обновить следующий шаг"]
     F --> B
@@ -87,22 +98,25 @@ flowchart TD
     class A,B,C,D,E,F step
 ```
 
-| Этап | Действие агента |
-|---|---|
-| **01 · Restore** | Читает сохранённую память и проверяет её актуальность |
-| **02 · Work** | Выполняет задачу, отмечая важные изменения и решения |
-| **03 · Checkpoint** | Обновляет память по ходу работы и перед завершением сессии |
-| **04 · Resume** | Следующая сессия начинает с проверенного состояния проекта |
+<div align="center">
+
+| **01 · RESTORE** | **02 · WORK** | **03 · CHECKPOINT** | **04 · RESUME** |
+|:---:|:---:|:---:|:---:|
+| Прочитать память и проверить её | Выполнить задачу | Сохранить важные изменения | Продолжить с нужного места |
+
+</div>
+
+---
 
 ## Установка
 
-Memory Upgrade можно установить через официальный CLI экосистемы Agent Skills — `npx skills`. Команда скачает навык из GitHub и разместит его в каталоге, который использует выбранный агент.
+Выберите свою среду и выполните одну команду в терминале из корня проекта. Установка выполняется через CLI экосистемы Agent Skills — `npx skills`.
 
-**Требования:** Node.js 22.20.0 или новее и npm.
+<blockquote>
+<strong>Требования:</strong> Node.js 22.20.0 или новее и npm.
+</blockquote>
 
 ### OpenAI Codex
-
-Выполните в терминале из корня проекта:
 
 ```bash
 npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a codex
@@ -132,93 +146,93 @@ npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a github-c
 npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a opencode
 ```
 
-### Установка для всех проектов
+### Глобальная установка
 
-По умолчанию CLI устанавливает навык в текущий проект. Чтобы сделать его доступным во всех проектах пользователя, добавьте флаг `-g`:
+По умолчанию навык устанавливается в текущий проект. Чтобы сделать его доступным во всех проектах пользователя, добавьте флаг `-g`:
 
 ```bash
 npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a codex -g
 ```
 
-Замените `codex` на нужный идентификатор агента из инструкций выше. Устанавливайте навык отдельно для каждой среды, которой пользуетесь.
+Замените `codex` на идентификатор своей среды из списка выше.
 
-### Установка по промту (без ручного ввода команд)
+### Установка с помощью AI-агента
 
-Если вы работаете с AI-агентом в терминале или IDE, можно просто отправить ему следующий промт. Агент должен определить свою среду, установить Memory Upgrade подходящим способом и проверить результат.
-
-Скопируйте и отправьте агенту:
+Необязательно запускать команду самостоятельно. Скопируйте промт ниже и отправьте его своему агенту — он определит среду, установит навык и проверит результат.
 
 ```text
 Установи для себя навык Memory Upgrade из репозитория:
 https://github.com/Pre11yhacker/memory-upgrade
 
-Сначала определи, в какой среде ты работаешь (OpenAI Codex, Claude Code, Cursor, GitHub Copilot, OpenCode или другая), и используй официальный CLI Agent Skills:
+1. Определи текущую среду: OpenAI Codex, Claude Code, Cursor,
+   GitHub Copilot, OpenCode или другую.
+2. Если среда поддерживается CLI Agent Skills, выполни:
+   npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a <agent-id>
+   Используй правильный идентификатор:
+   - codex
+   - claude-code
+   - cursor
+   - github-copilot
+   - opencode
+3. Устанавливай навык в текущий проект, если я явно не попросил
+   глобальную установку. Для глобальной установки используй -g.
+4. Если CLI не поддерживает мою среду, изучи README и установи
+   навык вручную в подходящий каталог этой среды.
+5. Проверь, что каталог memory-upgrade и файл SKILL.md существуют
+   в месте установки и доступны агенту.
+6. Сообщи, куда установлен навык и требуется ли перезапуск среды.
 
-npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a <agent-id>
-
-Подставь вместо <agent-id> идентификатор моей среды:
-- codex — OpenAI Codex
-- claude-code — Claude Code
-- cursor — Cursor
-- github-copilot — GitHub Copilot
-- opencode — OpenCode
-
-Устанавливай навык в текущий проект, если я явно не попросил глобальную установку. Если CLI недоступен или моя среда не поддерживается, изучи README репозитория и установи навык вручную в правильный каталог этой среды.
-
-После установки:
-1. Проверь, что каталог memory-upgrade и файл SKILL.md действительно появились в нужном месте.
-2. Убедись, что агентная среда сможет обнаружить навык; если требуется, сообщи, нужно ли перезапустить её.
-3. Кратко объясни, что было установлено и где.
-4. Не создавай SESSION_MEMORY.md заранее — дождись реальной работы над проектом или отдельной просьбы.
-5. Не изменяй существующие инструкции проекта и другие файлы без необходимости.
-
-Если установка не удалась, не утверждай обратное: покажи ошибку и предложи корректный способ установки.
+Не создавай SESSION_MEMORY.md заранее. Не изменяй существующие
+инструкции и файлы проекта без необходимости.
+Не заявляй об успешной установке, если проверка не пройдена.
 ```
 
 ### Проверка установки
-
-Посмотреть установленные навыки можно командой:
 
 ```bash
 npx skills list
 ```
 
-После установки откройте или перезапустите агентную среду, если навык не появился сразу. Memory Upgrade рассчитан на автоматическое применение агентом при работе над проектом — отдельная команда для каждого запуска не нужна.
+Если навык не появился сразу, перезапустите агентную среду. После установки он предназначен для использования в ходе работы над проектом — запускать отдельную команду при каждой сессии не требуется.
 
 <details>
 <summary><strong>Ручная установка и постоянные инструкции проекта</strong></summary>
 
-Если вы не хотите использовать CLI, скопируйте каталог `skills/memory-upgrade` целиком в каталог навыков нужного агента:
+Скопируйте каталог `skills/memory-upgrade` целиком в каталог навыков нужного агента:
 
 | Агент | Каталог проекта | Каталог пользователя |
-|---|---|---|
+|:--|:--|:--|
 | Codex | `.agents/skills/memory-upgrade/` | `~/.agents/skills/memory-upgrade/` |
 | Claude Code | `.claude/skills/memory-upgrade/` | `~/.claude/skills/memory-upgrade/` |
 | Cursor | `.cursor/skills/memory-upgrade/` | `~/.cursor/skills/memory-upgrade/` |
 | GitHub Copilot | `.github/skills/memory-upgrade/` | `~/.copilot/skills/memory-upgrade/` |
 | OpenCode | `.opencode/skills/memory-upgrade/` | `~/.config/opencode/skills/memory-upgrade/` |
 
-Для сред, которые загружают `AGENTS.md` как инструкции проекта, дополнительно скопируйте `skills/memory-upgrade/AGENTS.md` в корень проекта. Если `AGENTS.md` уже существует, объедините инструкции, не удаляя текущие правила.
+Для сред, которые загружают `AGENTS.md` как инструкции проекта, дополнительно скопируйте `skills/memory-upgrade/AGENTS.md` в корень проекта. Если файл уже существует, объедините инструкции, не удаляя текущие правила.
 
-Подробный сценарий работы находится в [`SKILL.md`](skills/memory-upgrade/SKILL.md).
+Подробное описание поведения навыка: [`SKILL.md`](skills/memory-upgrade/SKILL.md).
 
 </details>
 
 ## Совместимость
 
-Memory Upgrade построен на открытом формате [Agent Skills](https://agentskills.io/specification). Установка и автоматический вызов зависят от возможностей конкретной среды и её конфигурации.
+Memory Upgrade использует открытый формат [Agent Skills](https://agentskills.io/specification). Фактическая поддержка установки и автоматического вызова зависит от возможностей и конфигурации конкретной среды.
 
-- [OpenAI Codex](https://developers.openai.com/codex/)
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview)
-- [Cursor](https://docs.cursor.com/)
-- [GitHub Copilot](https://docs.github.com/en/copilot)
-- [OpenCode](https://opencode.ai/docs/skills/)
+<div align="center">
+
+<a href="https://developers.openai.com/codex/"><img src="https://img.shields.io/badge/OpenAI-Codex-171020?style=flat-square&logo=openai&logoColor=white" alt="OpenAI Codex"></a>
+<a href="https://docs.anthropic.com/en/docs/claude-code/overview"><img src="https://img.shields.io/badge/Claude-Code-171020?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Code"></a>
+<a href="https://docs.cursor.com/"><img src="https://img.shields.io/badge/Cursor-IDE-171020?style=flat-square" alt="Cursor"></a>
+<a href="https://docs.github.com/en/copilot"><img src="https://img.shields.io/badge/GitHub-Copilot-171020?style=flat-square&logo=github&logoColor=white" alt="GitHub Copilot"></a>
+<a href="https://opencode.ai/docs/skills/"><img src="https://img.shields.io/badge/OpenCode-Skills-171020?style=flat-square" alt="OpenCode"></a>
+
+</div>
 
 ## Безопасность и ограничения
 
-- Не записывайте в память пароли, токены, приватные ключи и другие секреты.
-- Разделяйте подтверждённые факты и предположения.
-- Сверяйте старые заметки с текущим состоянием проекта.
+- Не сохраняйте в памяти пароли, токены, приватные ключи и другие секреты.
+- Отделяйте подтверждённые факты от предположений.
+- Сверяйте старые заметки с актуальным состоянием проекта.
 - Не отмечайте проверки выполненными, если они фактически не запускались.
 - Перед публикацией репозитория проверьте `SESSION_MEMORY.md`: в нём может оказаться внутренняя информация.
 
@@ -244,20 +258,36 @@ memory-upgrade/
 
 ## Участие в проекте
 
-Идеи, сообщения об ошибках и улучшения приветствуются. Для изменений можно открыть [Issue](../../issues) или отправить Pull Request.
+Предложения, сообщения об ошибках и улучшения приветствуются. Вы можете открыть [Issue](../../issues) или отправить Pull Request.
 
 Чтобы быстрее разобраться с проблемой, укажите:
 - агентную среду и её версию;
 - способ установки;
 - ожидаемое поведение;
-- что произошло фактически.
+- фактический результат.
+
+---
 
 ## Контакты
 
 <div align="center">
 
-**Разработка и обратная связь**
+### Разработка и обратная связь
 
-[Telegram · @s1lentpacket](https://t.me/s1lentpacket) &nbsp;·&nbsp; [GitHub · Pre11yhacker](https://github.com/Pre11yhacker)
+Если у вас есть идея, вопрос или предложение по улучшению Memory Upgrade — напишите мне.
+
+<br>
+
+<a href="https://t.me/s1lentpacket">
+  <img src="https://img.shields.io/badge/TELEGRAM-@s1lentpacket-171020?style=for-the-badge&logo=telegram&logoColor=white&labelColor=171020&color=6D28D9" alt="Telegram @s1lentpacket">
+</a>
+&nbsp;
+<a href="https://github.com/Pre11yhacker">
+  <img src="https://img.shields.io/badge/GITHUB-Pre11yhacker-171020?style=for-the-badge&logo=github&logoColor=white&labelColor=171020&color=8B5CF6" alt="GitHub Pre11yhacker">
+</a>
+
+<br><br>
+
+<sub>Memory Upgrade · Project memory for AI agents</sub>
 
 </div>
