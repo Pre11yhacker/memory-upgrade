@@ -10,30 +10,14 @@
 
 <br>
 
-<a href="#возможности"><img src="https://img.shields.io/badge/ВОЗМОЖНОСТИ-ОЗНАКОМИТЬСЯ-171020?style=for-the-badge&labelColor=171020&color=6D28D9" alt="Возможности"></a>
-<a href="#установка"><img src="https://img.shields.io/badge/УСТАНОВКА-НАЧАТЬ-171020?style=for-the-badge&labelColor=171020&color=8B5CF6" alt="Установка"></a>
-<a href="#контакты"><img src="https://img.shields.io/badge/КОНТАКТЫ-СВЯЗАТЬСЯ-171020?style=for-the-badge&labelColor=171020&color=A78BFA" alt="Контакты"></a>
-
 <br><br>
-
-<a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent_Skills-compatible-8B5CF6?style=flat-square&labelColor=171020" alt="Agent Skills"></a>
-<img src="https://img.shields.io/badge/Workflow-Restore_%2F_Work_%2F_Resume-6D28D9?style=flat-square&labelColor=171020" alt="Workflow">
-<a href="https://github.com/Pre11yhacker/memory-upgrade/stargazers"><img src="https://img.shields.io/github/stars/Pre11yhacker/memory-upgrade?style=flat-square&color=A78BFA&labelColor=171020" alt="GitHub stars"></a>
-<a href="https://github.com/Pre11yhacker/memory-upgrade/blob/Zangetsuvpn/LICENSE"><img src="https://img.shields.io/github/license/Pre11yhacker/memory-upgrade?style=flat-square&color=8B5CF6&labelColor=171020" alt="License"></a>
+</a>
 
 </div>
 
----
+--- 
 
-## Содержание
 
-<div align="center">
-
-[О проекте](#о-проекте)　·　[Возможности](#возможности)　·　[Принцип-работы](#принцип-работы)　·　[Установка](#установка)　·　[Безопасность](#безопасность)　·　[Структура](#структура-проекта)　·　[Контакты](#контакты)
-
-</div>
-
----
 
 ## О проекте
 
@@ -287,7 +271,5 @@ memory-upgrade/
 </a>
 
 <br><br>
-
-<sub>Memory Upgrade · Project memory for AI agents</sub>
 
 </div>
