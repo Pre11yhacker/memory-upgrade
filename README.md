@@ -96,32 +96,76 @@ flowchart TD
 
 ## Установка
 
-### Через GitHub CLI
+Memory Upgrade можно установить через официальный CLI экосистемы Agent Skills — `npx skills`. Команда скачает навык из GitHub и разместит его в каталоге, который использует выбранный агент.
 
-Установите навык для нужных агентных сред:
+**Требования:** Node.js 22.20.0 или новее и npm.
+
+### OpenAI Codex
+
+Выполните в терминале из корня проекта:
 
 ```bash
-gh skill install Pre11yhacker/memory-upgrade memory-upgrade \
-  --agent codex \
-  --agent claude-code \
-  --agent cursor \
-  --agent github-copilot \
-  --agent opencode \
-  --scope user
+npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a codex
 ```
 
-Уберите параметры `--agent`, которые вам не нужны. Для установки в конкретный проект используйте `--scope project`.
+### Claude Code
 
-[Документация команды gh skill install](https://cli.github.com/manual/gh_skill_install).
+```bash
+npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a claude-code
+```
+
+### Cursor
+
+```bash
+npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a cursor
+```
+
+### GitHub Copilot
+
+```bash
+npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a github-copilot
+```
+
+### OpenCode
+
+```bash
+npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a opencode
+```
+
+### Установка для всех проектов
+
+По умолчанию CLI устанавливает навык в текущий проект. Чтобы сделать его доступным во всех проектах пользователя, добавьте флаг `-g`:
+
+```bash
+npx -y skills add Pre11yhacker/memory-upgrade --skill memory-upgrade -a codex -g
+```
+
+Замените `codex` на нужный идентификатор агента из инструкций выше. Устанавливайте навык отдельно для каждой среды, которой пользуетесь.
+
+### Проверка установки
+
+Посмотреть установленные навыки можно командой:
+
+```bash
+npx skills list
+```
+
+После установки откройте или перезапустите агентную среду, если навык не появился сразу. Memory Upgrade рассчитан на автоматическое применение агентом при работе над проектом — отдельная команда для каждого запуска не нужна.
 
 <details>
-<summary><strong>Постоянные инструкции проекта</strong></summary>
+<summary><strong>Ручная установка и постоянные инструкции проекта</strong></summary>
 
-Для сред, которые загружают `AGENTS.md` как инструкции проекта:
+Если вы не хотите использовать CLI, скопируйте каталог `skills/memory-upgrade` целиком в каталог навыков нужного агента:
 
-1. Скопируйте [`skills/memory-upgrade/AGENTS.md`](skills/memory-upgrade/AGENTS.md) в корень проекта.
-2. Объедините инструкции с существующим `AGENTS.md`, не удаляя текущие правила.
-3. Если агент использует другой файл постоянных инструкций, перенесите туда соответствующее правило.
+| Агент | Каталог проекта | Каталог пользователя |
+|---|---|---|
+| Codex | `.agents/skills/memory-upgrade/` | `~/.agents/skills/memory-upgrade/` |
+| Claude Code | `.claude/skills/memory-upgrade/` | `~/.claude/skills/memory-upgrade/` |
+| Cursor | `.cursor/skills/memory-upgrade/` | `~/.cursor/skills/memory-upgrade/` |
+| GitHub Copilot | `.github/skills/memory-upgrade/` | `~/.copilot/skills/memory-upgrade/` |
+| OpenCode | `.opencode/skills/memory-upgrade/` | `~/.config/opencode/skills/memory-upgrade/` |
+
+Для сред, которые загружают `AGENTS.md` как инструкции проекта, дополнительно скопируйте `skills/memory-upgrade/AGENTS.md` в корень проекта. Если `AGENTS.md` уже существует, объедините инструкции, не удаляя текущие правила.
 
 Подробный сценарий работы находится в [`SKILL.md`](skills/memory-upgrade/SKILL.md).
 
